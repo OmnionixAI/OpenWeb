@@ -1,0 +1,10 @@
+import type { RuntimeConfig } from "../types/index.js";
+export declare const defaultConfig: RuntimeConfig;
+export declare function getAppHome(): string;
+export declare function getConfigPath(): string;
+export declare function getHistoryPath(): string;
+export declare function getCachePath(): string;
+export declare function ensureAppHome(): Promise<void>;
+export declare function loadConfig(): Promise<RuntimeConfig>;
+export declare function saveConfig(config: RuntimeConfig): Promise<void>;
+export declare function setConfigValue(path: string, value: unknown): Promise<RuntimeConfig>;
