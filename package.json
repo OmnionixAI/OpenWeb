@@ -1,0 +1,72 @@
+{
+  "name": "openweb-cli",
+  "version": "0.1.0",
+  "description": "OpenWeb is a professional browser CLI by Omnionix for web research, page automation, extraction, and AI-assisted synthesis.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "openweb": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "if exist dist rmdir /s /q dist",
+    "dev": "tsx src/index.ts",
+    "lint": "tsc --noEmit -p tsconfig.test.json",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "browser",
+    "cli",
+    "chromium",
+    "playwright",
+    "web-search",
+    "ai",
+    "automation",
+    "typescript"
+  ],
+  "author": "Omnionix",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OmnionixAI/openweb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OmnionixAI/openweb/issues"
+  },
+  "homepage": "https://github.com/OmnionixAI/openweb#readme",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "cheerio": "^1.0.0",
+    "commander": "^14.0.0",
+    "lru-cache": "^11.2.1",
+    "marked": "^16.4.1",
+    "ora": "^8.2.0",
+    "playwright": "^1.54.2",
+    "table": "^6.9.0",
+    "turndown": "^7.2.1",
+    "zod": "^4.1.5"
+  },
+  "peerDependenciesMeta": {
+    "@xenova/transformers": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "@types/turndown": "^5.0.5",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
