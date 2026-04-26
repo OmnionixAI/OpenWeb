@@ -10,15 +10,18 @@ export function renderMarkdown(markdown: string): string {
 
 export function formatAnswer(answer: QueryAnswer): string {
   const lines = [
-    chalk.cyan(`Query: ${answer.query}`),
+    chalk.cyan.bold("━━━ Query ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"),
+    chalk.whiteBright(answer.query),
     "",
-    answer.answer.trim()
+    chalk.green.bold("━━━ Answer ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"),
+    chalk.white(answer.answer.trim())
   ];
 
   if (answer.sources.length > 0) {
-    lines.push("", chalk.bold("Sources"));
+    lines.push("", chalk.blue.bold("━━━ Sources ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"));
     for (const source of answer.sources) {
-      lines.push(`- ${source.title} (${source.url})`);
+      lines.push(`${chalk.cyan("•")} ${chalk.whiteBright(source.title)}`);
+      lines.push(`  ${chalk.dim.underline(source.url)}`);
     }
   }
 

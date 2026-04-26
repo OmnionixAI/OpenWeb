@@ -6,7 +6,7 @@ export async function runCli(argv: string[]): Promise<void> {
   program
     .name("openweb")
     .description("OpenWeb: a browser CLI for live web research, extraction, and AI-assisted answers")
-    .version("0.1.0")
+    .version("0.2.1")
     .showHelpAfterError("(run with --help for usage)")
     .option("--debug", "Enable debug logging");
 
@@ -18,7 +18,7 @@ export async function runCli(argv: string[]): Promise<void> {
     return;
   }
   if (subcommand === "version") {
-    console.log("0.1.0");
+    console.log("0.2.1");
     return;
   }
 

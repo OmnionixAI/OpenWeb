@@ -54,7 +54,7 @@ export const defaultConfig: RuntimeConfig = {
   },
   ai: {
     enabled: true,
-    modelId: "OmnionixAI/avara-x1-mini-Q4_K_M-GGUF",
+    modelId: "Qwen/Qwen3.5-2B",
     maxTokens: 512,
     temperature: 0.2
   },

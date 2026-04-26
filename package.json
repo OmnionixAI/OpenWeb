@@ -1,6 +1,6 @@
 {
   "name": "openweb-cli",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "OpenWeb is a professional browser CLI by Omnionix for web research, page automation, extraction, and AI-assisted synthesis.",
   "license": "Apache-2.0",
   "type": "module",

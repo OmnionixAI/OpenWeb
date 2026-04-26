@@ -46,17 +46,14 @@ export class AiEngine {
 
     try {
       const transformers = await this.loadTransformers();
-      const generator = await transformers.pipeline("text2text-generation", "Xenova/flan-t5-base");
-      const prompt = [
-        "Answer the question using the sources below.",
-        "Be concise, practical, and cite source titles in plain text.",
-        `Question: ${query}`,
-        `Sources:\n${context}`
-      ].join("\n\n");
+      const generator = await transformers.pipeline("text-generation", this.config.ai.modelId);
+      const systemPrompt = "You are OpenWeb, a research assistant by Omnionix. You have access to browser capabilities.";
+      const prompt = `<|im_start|>system\n${systemPrompt}<|im_end|>\n<|im_start|>user\nAnswer the question using the sources below.\nBe concise, practical, and cite source titles in plain text.\n\nQuestion: ${query}\n\nSources:\n${context}<|im_end|>\n<|im_start|>assistant\n`;
 
       const result = await generator(prompt, {
         max_new_tokens: Math.min(this.config.ai.maxTokens, 256),
-        temperature: this.config.ai.temperature
+        temperature: this.config.ai.temperature,
+        return_full_text: false
       });
       const first = Array.isArray(result) ? result[0] : result;
       return first && "generated_text" in first ? first.generated_text.trim() : heuristicAnswer(query, sources);
